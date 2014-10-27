@@ -53,7 +53,7 @@ to get a first impression on multi-screen app development using this plugin. Wit
 
 <p><img src="docs/schema.png" alt="Schema"></p>
 
-<p>This Cordova Presentation API Plugin implementation supports currently the following platforms and technologies:</p>
+<p>This Cordova Presentation API Plugin implementation supports currently the following platforms and technologies, utilizing the single UA approach and streaming the contents of a second WebView to the external display:</p>
 
 <ul>
 <li>iOS devices connecting via AV cable or AirPlay mirroring, utilizing <a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012555-CH1-SW1">Multiple Display Programming Guide for iOS</a>
@@ -75,7 +75,93 @@ to get a first impression on multi-screen app development using this plugin. Wit
 <h3>
 <a name="step-by-step-guide-to-develop-multi-screen-apps-using-the-cordova-presentation-api-plugin" class="anchor" href="#step-by-step-guide-to-develop-multi-screen-apps-using-the-cordova-presentation-api-plugin"><span class="octicon octicon-link"></span></a>Step by step guide to develop multi-screen apps using the Cordova Presentation API Plugin</h3>
 
-<p>tbd.</p>
+<p>Prerequisites: It is assumed that you have your development system set up. We used </p>
+
+<ul>
+<li><a href="http://cordova.apache.org/docs/en/4.0.0/">Cordova 4.0.0</a></li>
+<li><a href="https://developer.android.com/about/versions/android-4.4.html">Android SDK, API level 19</a></li>
+<li><a href="https://developer.apple.com/xcode/downloads/">Xcode 6.0.1 with iOS 8.0 SDK</a></li>
+</ul>
+
+<h4>
+<a name="step-1-preparing-the-app-project" class="anchor" href="#step-1-preparing-the-app-project"><span class="octicon octicon-link"></span></a>Step 1: Preparing the app project</h4>
+
+<p>It starts with the creation of the project folder and obligatory Cordova files. 
+This is easily with the <code>cordova</code>command if you have installed Apache Cordova successfully.
+Let's name our first app "MyFirstPresentaionApp" and execute in a shell in $HOME/devel folder:</p>
+
+<pre><code>$ cordova create mypresentation com.example.mypresentation MyFirstPresentaionApp
+Creating a new cordova project with name "HelloCordova" and id "MyFirstPresentaionApp" at location "$HOME/devel/mypresentation"
+</code></pre>
+
+<p>Now we will change into the freshly created project folder and add the platforms we would like to build the app for:</p>
+
+<pre><code>$ cd mypresentation
+$ cordova platform add ios
+Creating ios project...
+$ cordova platform add android
+Creating android project...
+Creating Cordova project for the Android platform:
+    Path: platforms/android
+    Package: com.example.mypresentation
+    Name: MyFirstPresentaionApp
+    Android target: android-19
+Copying template files...
+Project successfully created.
+</code></pre>
+
+<p>Finally, we add the Cordova Presentation API Plugin by executing:</p>
+
+<pre><code>$ cordova plugin add de.fhg.fokus.famium.presentation
+Fetching plugin "de.fhg.fokus.famium.presentation" via plugin registry
+npm http GET http://registry.cordova.io/de.fhg.fokus.famium.presentation
+npm http 304 http://registry.cordova.io/de.fhg.fokus.famium.presentation
+Installing "de.fhg.fokus.famium.presentation" for android
+Installing "de.fhg.fokus.famium.presentation" for ios
+</code></pre>
+
+<p>Alternatively to the last command, you may wish to use the cutting edge version of the plugin or your own version. In this case you can specify the repo url:</p>
+
+<pre><code>$ cordova plugin add https://github.com/fraunhoferfokus/cordova-plugin-presentation.git
+Fetching plugin "https://github.com/fraunhoferfokus/cordova-plugin-presentation.git" via git clone
+Installing "de.fhg.fokus.famium.presentation" for android
+Installing "de.fhg.fokus.famium.presentation" for ios
+</code></pre>
+
+<p>Now we move on to the interesting part, the app development.</p>
+
+<h4>
+<a name="step-2-implementing-the-multi-screen-app" class="anchor" href="#step-2-implementing-the-multi-screen-app"><span class="octicon octicon-link"></span></a>Step 2: Implementing the multi-screen app</h4>
+
+<h4>
+<a name="step-3-building-and-running" class="anchor" href="#step-3-building-and-running"><span class="octicon octicon-link"></span></a>Step 3: Building and running</h4>
+
+<p>Having the hard part done, now we finalize the app by building and running it. This is done again very easily using the <code>cordova</code>command. To build:</p>
+
+<pre><code>$ cordova build ios
+//lot of output (hopefully;) ending with  
+** BUILD SUCCEEDED **
+$ cordova build android
+//lot of output (hopefully;) ending with  
+BUILD SUCCESSFUL
+Total time: 20 seconds
+Built the following apk(s):
+    $HOME/devel/mypresentation/platforms/android/ant-build/CordovaApp-debug.apk
+</code></pre>
+
+<p>To run the app just execute for iOS:</p>
+
+<pre><code>$ cordova run ios
+</code></pre>
+
+<p>In iOS case the iPhone Simulator will be launched and you can activate the external display by choosing e.g. <code>Hardware</code> -&gt; <code>External Display</code> -&gt; <code>1024 x 768</code>. Alternatively, you may want to open the Xcode project and tweak your app or deploy it to a real device from there. In this case, you will find the project at <code>$HOME/devel/mypresentation/platforms/ios/MyFirstPresentaionApp.xcodeproj</code></p>
+
+<p>To run for Android:</p>
+
+<pre><code>$ cordova run android
+</code></pre>
+
+<p>The run command for Android requires you to have either a (MiraCast capable) Android device attached to your computer and its accessible by adb (use <code>$ adb devices</code> to check) or you have created an emulator (<code>$ android avd</code>) and simulating an external screen using the appropriate setting in the developer settings.</p>
 
 <h2>
 <a name="contribution" class="anchor" href="#contribution"><span class="octicon octicon-link"></span></a>Contribution</h2>
