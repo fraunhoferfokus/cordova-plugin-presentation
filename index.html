@@ -135,6 +135,89 @@ Installing "de.fhg.fokus.famium.presentation" for ios
 
 <p>This is the most crucial step, since it's about realizing your app idea. At least, you don't have to care about implementing the bits and pieces to connect and handle and external display. The plugin will do the work for you, if only your code implements agains the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a>.</p>
 
+<p>So let's implement the following very simple app idea: The controlling page connects to an external screen and provides a button. If the button is clicked then the current date and time will be posted to the presenting page and displayed on the big screen.</p>
+
+<p>For this purpose, we purge the contents of the <code>$HOME/devel/mypresentation/www</code> folder and create two new files:</p>
+
+<ul>
+<li>index.html that will be our controlling page </li>
+<li>display.html that will be our presenting page</li>
+</ul>
+
+<p>The contents of the index.html could look like:</p>
+
+<pre><code>&lt;!-- index.html --&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;MyFirstPresentaionApp&lt;/title&gt;
+   &lt;script type="text/javascript" src="cordova.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+   &lt;button&gt;Send Date and Time to Big Screen&lt;/button&gt;
+
+   &lt;script type="text/javascript"&gt;
+      var onDeviceReady = function(){
+         var session,
+             button = document.querySelector('button');
+         button.disabled = true;
+         button.onclick = function(){
+            if (session &amp;&amp; session.state == "connected")
+               session.postMessage(new Date().toString());
+         }
+         navigator.presentation.onavailablechange = function(screenEvent){
+            if(screenEvent.available){
+               session = navigator.presentation.requestSession("display.html");
+               session.onmessage = function(msg){ /*we don't care in this app*/ };
+               session.onstatechange = function(){
+                  button.disabled = session.state != "connected";
+               }
+            }
+         };
+      };
+      document.addEventListener('deviceready', onDeviceReady, false);
+   &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>The contents of the display.html could look like:</p>
+
+<pre><code>&lt;!-- display.html --&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;MyFirstPresentaionApp | Display&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;h1&gt;Waiting for a Date and Time update...&lt;/h1&gt;
+   &lt;div&gt;&lt;/div&gt;
+
+   &lt;script type="text/javascript"&gt;
+      var onDeviceReady = function(){
+         var session,
+             div = document.querySelector('div');
+         navigator.presentation.onpresent = function(presentEvent){
+            session = presentEvent.session;
+            session.onmessage = function(msg){
+               div.innerText = msg;
+            };
+            session.onstatechange = function(){
+               div.innerText = session.state;
+            }
+         };
+      };
+      document.addEventListener('deviceready', onDeviceReady, false);
+   &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Pitfall: Do not include the <code>cordova.js</code> into the presenting page, since only the controlling page is a Cordova WebView. </p>
+
 <h4>
 <a name="step-3-building-and-running" class="anchor" href="#step-3-building-and-running"><span class="octicon octicon-link"></span></a>Step 3: Building and running</h4>
 
@@ -164,6 +247,8 @@ Built the following apk(s):
 </code></pre>
 
 <p>The run command for Android requires you to have either a (MiraCast capable) Android device attached to your computer and its accessible by adb (use <code>$ adb devices</code> to check) or you have created an emulator (<code>$ android avd</code>) and simulating an external screen using the appropriate setting in the developer settings.</p>
+
+<p>Congratulations, you have managed to build an native app using the Cordova Presentation API Plugin.</p>
 
 <h2>
 <a name="contribution" class="anchor" href="#contribution"><span class="octicon octicon-link"></span></a>Contribution</h2>
