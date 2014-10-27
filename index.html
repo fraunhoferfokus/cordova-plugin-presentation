@@ -34,8 +34,33 @@
         <h1>
 <a name="create-native-multi-screen-apps-in-minutes-with-the-cordova-presentation-api-plugin" class="anchor" href="#create-native-multi-screen-apps-in-minutes-with-the-cordova-presentation-api-plugin"><span class="octicon octicon-link"></span></a>Create native multi-screen apps in minutes with the Cordova Presentation API Plugin.</h1>
 
+<h2>
+<a name="for-the-impatient" class="anchor" href="#for-the-impatient"><span class="octicon octicon-link"></span></a>For the impatient</h2>
+
 <p>Please check out our simple <a href="http://fraunhoferfokus.github.io/cordova-plugin-presentation-helloapp/">HelloApp</a> 
-to get a first impression on multi-screen app development using this plugin.</p>
+to get a first impression on multi-screen app development using this plugin. With the instructions given there the sample app is built in less than a minute!</p>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>This document describes the Apache Cordova implementation of the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a> introduced by the <a href="http://www.w3.org/community/webscreens/">W3C Second Screen Presentation Community Group</a> and which is discussed now within the <a href="http://www.w3.org/2014/secondscreen/">Second Screen Presentation Working Group</a>. The implementation is an open-sourced part of <a href="http://www.fokus.fraunhofer.de/go/famium">FAMIUM</a>, an end-to-end prototype implementation for early technology evaluation and interoperability testing introduced by Fraunhofer FOKUS’ Competence Center <a href="http://www.fokus.fraunhofer.de/go/fame">Future Applications and Media</a> (<a href="http://www.fokus.fraunhofer.de/go/fame">FAME</a>). </p>
+
+<p>Using this plugin, Presentation API powered apps can be built today, (hopefully not so) long before the Presentation API has landed in our Web browsers. </p>
+
+<p>The main purpose of the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a> is to enable web pages to access external presentation-type displays and use them for presenting web content. It aims to make secondary displays such as a projector or a connected TV available to the web and takes into account displays that are attached using wired (HDMI, DVI or similar) and wireless technologies (MiraCast, Chromecast, DLNA, AirPlay or similar). At its core, the specification of the Presentation API enables an exchange of messages between a requesting page and a presentation page shown in the secondary display. How those messages are transmitted is left to the UA in order to allow for use of display devices that can be attached in a wide variety of ways. For example, when a display device is attached using HDMI or MiraCast, the UA on the requesting device can render the requested presentation page in that same UA, but instead of displaying in a window on that same device, it can use whatever means the operating system provides for using those external displays. In that case, both the requesting page and the presentation page run on the requesting device and the operating system is used to route the presentation display output to the other display device. The second display device doesn't need to know anything about this spec or that the content involves HTML5. Alternately, some types of external displays may be able to render HTML5 themselves and may have defined their own way to send messages to that content. In that case, the UA on the requesting device would not need to render the presentation page itself. Instead, the UA could act as a proxy translating the request to show a page and the messages into the form understood by the display device. </p>
+
+<p>Since the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a> abstracts from all the technologies described above and specifies only the interfaces, there are different ways to implement it depending from the target platform of the controlling device and the presenting display as well as from the technologies and protocols used behind. </p>
+
+<p>This Cordova Presentation API Plugin implementation supports currently the following platforms and technologies:</p>
+
+<ul>
+<li>iOS devices connecting via AV cable or AirPlay mirroring, utilizing <a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40012555-CH1-SW1">Multiple Display Programming Guide for iOS</a>
+</li>
+<li>Android devices connecting via AV cable or MiraCast, utilizing <a href="https://developer.android.com/reference/android/app/Presentation.html">Android Presentation API</a>
+</li>
+</ul>
+
+<p>Further implementations of the Presentation API are available at <a href="https://gitlab.fokus.fraunhofer.de/famium/famium-webscreens/wikis/home">FAMIUM Webscreens</a>.</p>
 
 <h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
