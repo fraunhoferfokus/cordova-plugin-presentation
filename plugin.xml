@@ -25,9 +25,9 @@
     id="de.fhg.fokus.famium.presentation"
     version="0.0.1">
     <name>Presentation</name>
-    <description>Cordova Presentation Plugin</description>
+    <description>Cordova Presentation API Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>famium,cordova,presentation,second screen,webscreens</keywords>
+    <keywords>famium,cordova,presentation,presentation api,second screen,multi-screen,webscreens</keywords>
     <repo>https://github.com/fraunhoferfokus/cordova-plugin-presentation.git</repo>
     <issue>https://github.com/fraunhoferfokus/cordova-plugin-presentation/issues</issue>
 
