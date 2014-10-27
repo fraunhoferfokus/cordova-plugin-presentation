@@ -1,0 +1,184 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    color: #009ee0;
+    font-style: italic;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../img/landscape1.jpeg");
+    
+}
+
+/*@media screen and (min-width: 1280px){
+	body {
+ background-size: 100% auto;
+	}
+ }
+ 
+ @media screen and (min-height: 720px) and (max-width: 720px){
+ body {
+ background-size: auto 100%;
+	}
+ }*/
+
+body:before {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 2px;
+}
+
+body[data-state="connecting"]:before {
+    content: "Connecting ...";
+    color: orange;
+}
+
+body[data-state="reconnecting"]:before {
+    content: "Reconnecting ...";
+    color: orange;
+}
+
+body[data-state="connected"]:before {
+    content: "Connected";
+    color: green;
+}
+
+body[data-state="error"]:before {
+    content: "Connection Error";
+    color: red;
+}
+
+body[data-state="failed"]:before {
+    content: "Connection Failed";
+    color: red;
+}
+
+body[data-state="ready"]:before {
+    content: "Ready to present";
+    color: green;
+}
+
+body[data-state="disconnected"]:before  {
+    content: "Disconnected";
+    color: red;
+}
+
+body[data-state = "disconnected"]  {
+    background-image: none;
+}
+#overlay{
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+}
+#info{
+    position: absolute;
+    height: 20%;
+    background-image: url('../img/famium-launcher.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    padding-left: 20%;
+    left: 5%;
+    bottom: 10%;
+    font-size: 10px;
+    line-height: 40px;
+    /*font-family: sans-serif;*/
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    text-shadow: #000 1px 1px 5px;
+
+}
+
+#info label#name {
+    padding-top: 100px;
+}
+#info label#name:after {
+    content: "Display: " attr(data-name);
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+#info label#room:after {
+    content: "Room: " attr(data-room);
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+body[data-controls = "false"]  #power {
+    display: none;
+}
+
+#power > div{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 48px;
+    height: 48px;
+}
+
+iframe[src] ~ power {
+    z-index: 0;
+}
+body[data-state ="disconnected"]  #power-off {
+    display: none;
+}
+body:not([data-state="disconnected"])  #power-on {
+    display: none;
+}
+#power > div {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    cursor: pointer;
+}
+
+#power > #power-on {
+    background-image: url("../img/turn-on-icon.png");
+}
+
+#power > #power-off {
+    background-image: url("../img/turn-off-icon.png");
+}
+
+body > iframe {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+body > iframe::-webkit-scrollbar { 
+    display: none; 
+}
+
+body > iframe[src=""]{
+    display: none; 
+}
+
+body > iframe:not([src]){
+    display: none; 
+}

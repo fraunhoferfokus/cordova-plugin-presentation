@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Copyright 2014 Fraunhofer FOKUS
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * AUTHORS: Louay Bassbouss <louay.bassbouss@fokus.fraunhofer.de>
+ *          Martin Lasak <martin.lasak@fokus.fraunhofer.de>
+ */
+-->
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="de.fhg.fokus.famium.presentation"
+    version="0.0.1">
+    <name>Presentation</name>
+    <description>Cordova Presentation Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>famium,cordova,presentation,second screen,webscreens</keywords>
+    <repo>https://github.com/fraunhoferfokus/cordova-plugin-presentation.git</repo>
+    <issue>https://github.com/fraunhoferfokus/cordova-plugin-presentation/issues</issue>
+
+    <js-module src="www/presentation.js" name="presentation">
+        <clobbers target="navigator.presentation" />
+    </js-module>
+
+    <asset src="www/presentation" target="presentation" />
+
+     <!-- ios -->
+     <platform name="ios">
+         <config-file target="config.xml" parent="/*">
+             <feature name="Presentation">
+                 <param name="ios-package" value="CDVPresentationPlugin" />
+             </feature>
+         </config-file>
+          <header-file src="src/ios/CDVPresentationPlugin.h" />
+          <source-file src="src/ios/CDVPresentationPlugin.m" />
+          <header-file src="src/ios/DevicePickerViewController.h" />
+          <source-file src="src/ios/DevicePickerViewController.m" />
+          <header-file src="src/ios/Event.h" />
+          <source-file src="src/ios/Event.m" />
+          <header-file src="src/ios/EventTarget.h" />
+          <source-file src="src/ios/EventTarget.m" />
+          <header-file src="src/ios/JointContext.h" />
+          <source-file src="src/ios/JointContext.m" />
+          <header-file src="src/ios/NavigatorPresentation.h" />
+          <source-file src="src/ios/NavigatorPresentation.m" />
+          <header-file src="src/ios/PresentEvent.h" />
+          <source-file src="src/ios/PresentEvent.m" />
+          <header-file src="src/ios/PresentationSession.h" />
+          <source-file src="src/ios/PresentationSession.m" />
+          <header-file src="src/ios/WebscreenViewController.h" />
+          <source-file src="src/ios/WebscreenViewController.m" />
+         <framework src="JavaScriptCore.framework" />
+     </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Presentation">
+                <param name="android-package" value="de.fhg.fokus.famium.presentation.CDVPresentationPlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+       <source-file src="src/android/CDVPresentationPlugin.java" target-dir="src/de/fhg/fokus/famium/presentation" />
+	   <source-file src="src/android/PresentationSession.java" target-dir="src/de/fhg/fokus/famium/presentation" />
+	   <source-file src="src/android/NavigatorPresentationJS.java" target-dir="src/de/fhg/fokus/famium/presentation" />
+	   <source-file src="src/android/SecondScreenPresentation.java" target-dir="src/de/fhg/fokus/famium/presentation" />
+     </platform>
+
+</plugin>
