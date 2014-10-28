@@ -63,8 +63,8 @@ The ```onavailablechange``` handler will be invoked at the controller page only.
 
 If a screen becomes available or unavailable the ```onAvailableChangeCallback``` callback function will be invoked with the following parameter:
 
-* availableChangeEvent: Object. Derived from ```Event``` with additional boolean property ```available```
-* availableChangeEvent.available: Boolean. ```true``` indicates that at least one external screen is available
+* **availableChangeEvent**: Object. Derived from ```Event``` with additional boolean property ```available```
+* **availableChangeEvent.available**: Boolean. ```true``` indicates that at least one external screen is available
 
 Note: Setting the ```onavailablechange``` handler to ```null``` will request the plugin to stop watching for external display changes.
 
@@ -106,11 +106,11 @@ The ```requestSession``` function is available on the controller page only.
 
 The ```url``` parameter may be full qualified url or relative path.  A call to the ```requestSession``` function immediately returns a ```PresentationSession``` object. This object has the following properties:
 
-* PresentationSession.state: String. Read-only. With one of values { "connected", "disconnected" }
-* PresentationSession.postMessage: Function. Can be called with single ```String``` message argument, to send the message to the presenting page (or to send the message to the controller page if the ```session``` was obtained at the presenting page)
-* PresentationSession.close: Function. Can be called to close the session.
-* PresentationSession.onmessage: Handler. If callback function is assigned then it will be invoked with ```String``` message as argument in case the sender side calls the ```postMessage``` function.
-* PresentationSession.onstatechange: Handler. If callback function is assigned then it will be invoked without arguments in case the session state has changed.
+* **PresentationSession.state**: String. Read-only. With one of values { "connected", "disconnected" }
+* **PresentationSession.postMessage**: Function. Can be called with single ```String``` message argument, to send the message to the presenting page (or to send the message to the controller page if the ```session``` was obtained at the presenting page)
+* **PresentationSession.close**: Function. Can be called to close the session.
+* **PresentationSession.onmessage**: Handler. If callback function is assigned then it will be invoked with ```String``` message as argument in case the sender side calls the ```postMessage``` function.
+* **PresentationSession.onstatechange**: Handler. If callback function is assigned then it will be invoked without arguments in case the session state has changed.
 
 ### Supported Platforms
 
@@ -154,8 +154,8 @@ The ```onavailablechange``` handler will be invoked at the presenting page only.
 
 If the session is set up the ```onPresentCallback``` callback function will be invoked with the following parameter:
 
-* presentEvent: Object. Derived from ```Event``` with additional boolean property ```session``` 
-* presentEvent.session: Object. With the type ```PresentationSession``` with the same interface as described in ```navigator.presentation.requestSession```
+* **presentEvent**: Object. Derived from ```Event``` with additional boolean property ```session``` 
+* **presentEvent.session**: Object. With the type ```PresentationSession``` with the same interface as described in ```navigator.presentation.requestSession```
 
 ### Supported Platforms
 
