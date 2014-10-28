@@ -98,7 +98,7 @@ Get notified if an external display gets available:
 
 ## navigator.presentation.requestSession
 
-By calling navigator.presentation.requestSession(url), the script on the page tries to launch <!--or resume -->a presentation on a secondary screen. Based on the url argument, the UA looks for <!--existing sessions and -->available screens, and presents a screen picker user interface to the user. Out of the list of <!--existing sessions or -->available screens the user selects one item. <!--If an existing session was selected, the session is resumed by establishing a communication channel. -->If a new screen was selected, the UA connects to the selected screen, brings up a new window on the selected screen, starts to show the content denoted by the url argument, and the UA establishes a communication channel with this window.
+By calling navigator.presentation.requestSession(url), the script on the page tries to launch a presentation on a secondary screen. Based on the url argument, the UA looks for available screens, and presents a screen picker user interface to the user. Out of the list of available screens the user selects one item. If a new screen was selected, the UA connects to the selected screen, brings up a new window on the selected screen, starts to show the content denoted by the url argument, and the UA establishes a communication channel with this window.
 
     var session = navigator.presentation.requestSession(url)
 
@@ -106,7 +106,7 @@ The ```requestSession``` function is available on the controller page only.
 
 The ```url``` parameter may be full qualified url or relative path.  A call to the ```requestSession``` function immediately returns a ```PresentationSession``` object. This object has the following properties:
 
-* PresentationSession.state: String. Read-only. With one of values { "connected", "disconnected" <!--/*, "resumed" */--> }
+* PresentationSession.state: String. Read-only. With one of values { "connected", "disconnected" }
 * PresentationSession.postMessage: Function. Can be called with single ```String``` message argument, to send the message to the presenting page (or to send the message to the controller page if the ```session``` was obtained at the presenting page)
 * PresentationSession.close: Function. Can be called to close the session.
 * PresentationSession.onmessage: Handler. If callback function is assigned then it will be invoked with ```String``` message as argument in case the sender side calls the ```postMessage``` function.
