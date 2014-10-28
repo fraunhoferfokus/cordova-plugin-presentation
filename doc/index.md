@@ -150,7 +150,7 @@ When the content denoted by the url argument in the requestSession() example abo
 
     navigator.presentation.onpresent = onPresentCallback
 
-The ```onavailablechange``` handler will be invoked at the presenting page only.
+The ```onpresent``` handler will be invoked at the presenting page only.
 
 If the session is set up the ```onPresentCallback``` callback function will be invoked with the following parameter:
 
