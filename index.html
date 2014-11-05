@@ -32,22 +32,22 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a name="create-native-multiscreen-apps-in-minutes-with-the-cordova-presentation-api-plugin" class="anchor" href="#create-native-multiscreen-apps-in-minutes-with-the-cordova-presentation-api-plugin"><span class="octicon octicon-link"></span></a>Create native multiscreen apps in minutes with the Cordova Presentation API Plugin.</h1>
+<a id="create-native-multiscreen-apps-in-minutes-with-the-cordova-presentation-api-plugin" class="anchor" href="#create-native-multiscreen-apps-in-minutes-with-the-cordova-presentation-api-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create native multiscreen apps in minutes with the Cordova Presentation API Plugin.</h1>
 
 <h2>
-<a name="for-the-impatient" class="anchor" href="#for-the-impatient"><span class="octicon octicon-link"></span></a>For the impatient</h2>
+<a id="for-the-impatient" class="anchor" href="#for-the-impatient" aria-hidden="true"><span class="octicon octicon-link"></span></a>For the impatient</h2>
 
 <p>Please check out our simple <a href="http://fraunhoferfokus.github.io/cordova-plugin-presentation-helloapp/">HelloApp</a> 
 to get a first impression on multiscreen app development using this plugin. With the instructions given there the sample app is built in less than a minute!</p>
 
 <h2>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
 <p>This document describes the Apache Cordova implementation of the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a> introduced by the <a href="http://www.w3.org/community/webscreens/">W3C Second Screen Presentation Community Group</a> and which is discussed now within the <a href="http://www.w3.org/2014/secondscreen/">Second Screen Presentation Working Group</a>. The implementation is an open-sourced part of <a href="http://www.fokus.fraunhofer.de/go/famium">FAMIUM</a>, an end-to-end prototype implementation for early technology evaluation and interoperability testing introduced by Fraunhofer FOKUS’ Competence Center <a href="http://www.fokus.fraunhofer.de/go/fame">Future Applications and Media</a> (<a href="http://www.fokus.fraunhofer.de/go/fame">FAME</a>). </p>
 
 <p>Using this plugin, Presentation API powered apps can be built today, (hopefully not so) long before the Presentation API has landed in our Web browsers. </p>
 
-<p>Notice: Our Implementation supports <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">this version of the Presentation API</a>. Please refer  also to the <a href="http://webscreens.github.io/presentation-api">latest work-in-progress version of the API</a> which we are currently working on.</p>
+<p>Notice: Our Implementation supports <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">this version of the Presentation API</a>. Please refer  also to the <a href="http://w3c.github.io/presentation-api">latest work-in-progress version of the API</a> which we are currently working on.</p>
 
 <p>The main purpose of the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a> is to enable web pages to access external presentation-type displays and use them for presenting web content. It aims to make secondary displays such as a projector or a connected TV available to the web and takes into account displays that are attached using wired (HDMI, DVI or similar) and wireless technologies (MiraCast, Chromecast, DLNA, AirPlay or similar). At its core, the specification of the Presentation API enables an exchange of messages between a requesting page and a presentation page shown in the secondary display. How those messages are transmitted is left to the UA in order to allow for use of display devices that can be attached in a wide variety of ways. For example, when a display device is attached using HDMI or MiraCast, the UA on the requesting device can render the requested presentation page in that same UA, but instead of displaying in a window on that same device, it can use whatever means the operating system provides for using those external displays. In that case, both the requesting page and the presentation page run on the requesting device and the operating system is used to route the presentation display output to the other display device. The second display device doesn't need to know anything about this spec or that the content involves HTML5. Alternately, some types of external displays may be able to render HTML5 themselves and may have defined their own way to send messages to that content. In that case, the UA on the requesting device would not need to render the presentation page itself. Instead, the UA could act as a proxy translating the request to show a page and the messages into the form understood by the display device. </p>
 
@@ -67,15 +67,15 @@ to get a first impression on multiscreen app development using this plugin. With
 <p>Further implementations of the Presentation API (non Cordova) are available at <a href="https://gitlab.fokus.fraunhofer.de/famium/famium-webscreens/wikis/home">FAMIUM Webscreens</a>.</p>
 
 <h2>
-<a name="plugin-api-documentation" class="anchor" href="#plugin-api-documentation"><span class="octicon octicon-link"></span></a>Plugin API documentation</h2>
+<a id="plugin-api-documentation" class="anchor" href="#plugin-api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugin API documentation</h2>
 
 <p>The full plugin API documentation of the implemented Presentation API is available in the <a href="https://github.com/fraunhoferfokus/cordova-plugin-presentation/blob/master/doc/index.md">doc</a> folder.</p>
 
 <h2>
-<a name="from-zero-to-hero" class="anchor" href="#from-zero-to-hero"><span class="octicon octicon-link"></span></a>From zero to hero</h2>
+<a id="from-zero-to-hero" class="anchor" href="#from-zero-to-hero" aria-hidden="true"><span class="octicon octicon-link"></span></a>From zero to hero</h2>
 
 <h3>
-<a name="step-by-step-guide-to-develop-multiscreen-apps-using-the-cordova-presentation-api-plugin" class="anchor" href="#step-by-step-guide-to-develop-multiscreen-apps-using-the-cordova-presentation-api-plugin"><span class="octicon octicon-link"></span></a>Step by step guide to develop multiscreen apps using the Cordova Presentation API Plugin</h3>
+<a id="step-by-step-guide-to-develop-multiscreen-apps-using-the-cordova-presentation-api-plugin" class="anchor" href="#step-by-step-guide-to-develop-multiscreen-apps-using-the-cordova-presentation-api-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step by step guide to develop multiscreen apps using the Cordova Presentation API Plugin</h3>
 
 <p>Prerequisites: It is assumed that you have your development system set up. We used </p>
 
@@ -86,7 +86,7 @@ to get a first impression on multiscreen app development using this plugin. With
 </ul>
 
 <h4>
-<a name="step-1-preparing-the-app-project" class="anchor" href="#step-1-preparing-the-app-project"><span class="octicon octicon-link"></span></a>Step 1: Preparing the app project</h4>
+<a id="step-1-preparing-the-app-project" class="anchor" href="#step-1-preparing-the-app-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Preparing the app project</h4>
 
 <p>It starts with the creation of the project folder and obligatory Cordova files. 
 This is easily with the <code>cordova</code>command if you have installed Apache Cordova successfully.
@@ -133,7 +133,7 @@ Installing "de.fhg.fokus.famium.presentation" for ios
 <p>Now we move on to the interesting part, the app development.</p>
 
 <h4>
-<a name="step-2-implementing-the-multiscreen-app" class="anchor" href="#step-2-implementing-the-multiscreen-app"><span class="octicon octicon-link"></span></a>Step 2: Implementing the multiscreen app</h4>
+<a id="step-2-implementing-the-multiscreen-app" class="anchor" href="#step-2-implementing-the-multiscreen-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Implementing the multiscreen app</h4>
 
 <p>This is the most crucial step, since it's about realizing your app idea. At least, you don't have to care about implementing the bits and pieces to connect and handle external displays. The plugin will do the work for you, if only your code implements agains the <a href="http://www.w3.org/2014/secondscreen/presentation-api/20140721/">Presentation API</a>.</p>
 
@@ -221,7 +221,7 @@ Installing "de.fhg.fokus.famium.presentation" for ios
 <p>Pitfall: Do not include the <code>cordova.js</code> into the presenting page, since only the controlling page is a Cordova WebView. </p>
 
 <h4>
-<a name="step-3-building-and-running" class="anchor" href="#step-3-building-and-running"><span class="octicon octicon-link"></span></a>Step 3: Building and running</h4>
+<a id="step-3-building-and-running" class="anchor" href="#step-3-building-and-running" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Building and running</h4>
 
 <p>Having the hard part done, now we finalize the app by building and running it. This is done again very easily using the <code>cordova</code>command. To build:</p>
 
@@ -253,14 +253,14 @@ Built the following apk(s):
 <p>Congratulations, you have managed to build an native app using the Cordova Presentation API Plugin.</p>
 
 <h2>
-<a name="contribution" class="anchor" href="#contribution"><span class="octicon octicon-link"></span></a>Contribution</h2>
+<a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribution</h2>
 
 <p>We are grateful for any valuable contribution, like <a href="https://github.com/fraunhoferfokus/cordova-plugin-presentation/issues">issue reports</a>, <a href="https://github.com/fraunhoferfokus/cordova-plugin-presentation/tree/master/doc">documentation localizations</a>, <a href="https://github.com/fraunhoferfokus/cordova-plugin-presentation/tree/master/tests">tests</a> or <a href="https://github.com/fraunhoferfokus/cordova-plugin-presentation/pulls">pull requests</a>.</p>
 
 <p>Moreover, we would love to hear which exciting apps you have created using the Presentation API.</p>
 
 <h1>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>Copyright 2014 Fraunhofer FOKUS</p>
 
@@ -278,7 +278,7 @@ See the License for the specific language governing permissions and
 limitations under the License.</p>
 
 <h3>
-<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h3>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h3>
 
 <p><a href="http://www.fokus.fraunhofer.de/en/fame/index.html">Fraunhofer FOKUS - Competence Center FAME // Future Applications and Media</a></p>
 
