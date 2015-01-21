@@ -17,11 +17,9 @@
  *          Martin Lasak <martin.lasak@fokus.fraunhofer.de>
  */
 
-var argscheck = require('cordova/argscheck'),
-    channel = require('cordova/channel'),
-    utils = require('cordova/utils'),
-    execRaw = require('cordova/exec'),
+var execRaw = require('cordova/exec'),
     cordova = require('cordova');
+
 var makeAbs = function(url){
 	var absUrl = null;
 	try{absUrl = new URL(url,location.href).href; }catch(e){}
@@ -34,17 +32,13 @@ var makeAbs = function(url){
 	};
 	return absUrl;
 }
-    channel.createSticky('onCordovaInfoReady');
-    // Tell cordova channel to wait on the CordovaInfoReady event
-    channel.waitForInitialization('onCordovaInfoReady');
 
-
-               var exec = function(){
-               var args = arguments;
-                    setTimeout(function() {
-                               execRaw.apply(undefined, args);
-                    }, 0);
-               }
+var exec = function(){
+  var args = arguments;
+  setTimeout(function() {
+    execRaw.apply(undefined, args);
+  }, 0);
+}
 
 /** WebIDL: NavigatorPresentation
 
@@ -60,11 +54,6 @@ var makeAbs = function(url){
 
  */
 function NavigatorPresentation() {
-    // TODO(mla): could do maybe some init here.
-    channel.onCordovaReady.subscribe(function() {
-        channel.onCordovaInfoReady.fire();
-    });
-    // In case of mirroring, display the following placeholder page
     // In case of mirroring, display the following placeholder page
     var defaultDisplay = makeAbs("presentation/display.html");
     var c=document.getElementsByTagName("script");
