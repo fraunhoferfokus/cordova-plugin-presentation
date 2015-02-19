@@ -25,6 +25,7 @@ var makeAbs = function(url){
 	try{absUrl = new URL(url,location.href).href; }catch(e){}
 	if(!absUrl){
 		var a = document.createElement('a');
+		a.href = url;
 		absUrl = a.href;
 	}
 	if (!absUrl) {
