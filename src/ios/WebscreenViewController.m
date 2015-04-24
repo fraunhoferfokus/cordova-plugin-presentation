@@ -65,17 +65,16 @@
 
     [self.delegate webscreenReady: self.sid];
 }
-/*
+
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)shouldAutorotate
 {
     return NO;
 }
-*/
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
